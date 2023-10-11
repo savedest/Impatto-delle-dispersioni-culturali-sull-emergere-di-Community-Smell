@@ -1,0 +1,73 @@
+Linear mixed model fit by maximum likelihood  ['lmerMod']
+Formula: working_data$organisation ~ log(working_data$totalCommitters) +  
+    log(working_data$totalcommits) + working_data$projectAge +  
+    working_data$turnover + working_data$blauGender + working_data$tenureMedian +  
+    working_data$tenureDiversity + log(working_data$teamSize) +  
+    working_data$stCongruence + working_data$truckFactor + working_data$female +  
+    working_data$expertise + working_data$centrality + working_data$CV_1 +  
+    working_data$CV_2 + working_data$CV_3 + working_data$CV_4 +  
+    working_data$CV_5 + working_data$CV_6 + (1 | working_data$window_idx)
+
+     AIC      BIC   logLik deviance df.resid 
+   765.6    837.3   -360.8    721.6      170 
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-1.93475 -0.75308 -0.00831  0.70689  2.06126 
+
+Random effects:
+ Groups                  Name        Variance Std.Dev.
+ working_data$window_idx (Intercept) 0.00     0.000   
+ Residual                            2.51     1.584   
+Number of obs: 192, groups:  working_data$window_idx, 24
+
+Fixed effects:
+                                   Estimate Std. Error t value
+(Intercept)                        1.395977   1.541676   0.905
+log(working_data$totalCommitters)  0.332618   0.177967   1.869
+log(working_data$totalcommits)    -0.101356   0.134933  -0.751
+working_data$projectAge           -0.027446   0.028382  -0.967
+working_data$turnover             -1.207661   0.581334  -2.077
+working_data$blauGender            1.437807   2.040480   0.705
+working_data$tenureMedian         -0.099330   0.066761  -1.488
+working_data$tenureDiversity       0.021192   0.046804   0.453
+log(working_data$teamSize)         0.354546   0.176055   2.014
+working_data$stCongruence          0.373505   0.346870   1.077
+working_data$truckFactor           0.039678   0.087027   0.456
+working_data$female                0.042810   0.020935   2.045
+working_data$expertise            -0.392552   0.381443  -1.029
+working_data$centrality            0.006655   0.276379   0.024
+working_data$CV_1                  1.033520   2.511175   0.412
+working_data$CV_2                  0.573831   3.040383   0.189
+working_data$CV_3                 -1.959870   2.229393  -0.879
+working_data$CV_4                 -4.062589   3.997663  -1.016
+working_data$CV_5                  1.236888   1.950336   0.634
+working_data$CV_6                 -1.903487   3.351464  -0.568
+optimizer (nloptwrap) convergence code: 0 (OK)
+boundary (singular) fit: see help('isSingular')
+
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: working_data$organisation
+                                   Chisq Df Pr(>Chisq)  
+log(working_data$totalCommitters) 3.4931  1    0.06162 .
+log(working_data$totalcommits)    0.5642  1    0.45256  
+working_data$projectAge           0.9351  1    0.33353  
+working_data$turnover             4.3156  1    0.03777 *
+working_data$blauGender           0.4965  1    0.48103  
+working_data$tenureMedian         2.2137  1    0.13679  
+working_data$tenureDiversity      0.2050  1    0.65071  
+log(working_data$teamSize)        4.0555  1    0.04403 *
+working_data$stCongruence         1.1595  1    0.28158  
+working_data$truckFactor          0.2079  1    0.64844  
+working_data$female               4.1816  1    0.04087 *
+working_data$expertise            1.0591  1    0.30342  
+working_data$centrality           0.0006  1    0.98079  
+working_data$CV_1                 0.1694  1    0.68066  
+working_data$CV_2                 0.0356  1    0.85030  
+working_data$CV_3                 0.7728  1    0.37934  
+working_data$CV_4                 1.0327  1    0.30951  
+working_data$CV_5                 0.4022  1    0.52596  
+working_data$CV_6                 0.3226  1    0.57006  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

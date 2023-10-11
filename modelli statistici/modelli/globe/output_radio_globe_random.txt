@@ -1,0 +1,19 @@
+Linear mixed model fit by maximum likelihood  ['lmerMod']
+Formula: working_dataG$radio ~ (1 | working_dataG$window_idx)
+
+     AIC      BIC   logLik deviance df.resid 
+   745.5    755.3   -369.8    739.5      189 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-1.4701 -0.8250 -0.1817  0.9688  1.6635 
+
+Random effects:
+ Groups                   Name        Variance Std.Dev.
+ working_dataG$window_idx (Intercept) 0.04545  0.2132  
+ Residual                             2.71321  1.6472  
+Number of obs: 192, groups:  working_dataG$window_idx, 24
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)   2.3582     0.1276   18.48

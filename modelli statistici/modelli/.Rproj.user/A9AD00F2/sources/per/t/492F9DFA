@@ -1,0 +1,28 @@
+{
+    "id": "492F9DFA",
+    "path": "C:/Users/saver/modelli statistici/modelli/radio_mixed.Rmd",
+    "project_path": "radio_mixed.Rmd",
+    "type": "r_markdown",
+    "hash": "3690845057",
+    "contents": "",
+    "dirty": false,
+    "created": 1696168866372.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "tempName": "Untitled1",
+        "chunk_output_type": "inline",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "359,4",
+        "scrollLine": "343"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1696169059,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1696583638902,
+    "read_only": false,
+    "read_only_alternatives": []
+}

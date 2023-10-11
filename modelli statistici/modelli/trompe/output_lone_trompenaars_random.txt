@@ -1,0 +1,22 @@
+Linear mixed model fit by maximum likelihood  ['lmerMod']
+Formula: working_dataT$lone ~ (1 | working_dataT$window_idx)
+
+     AIC      BIC   logLik deviance df.resid 
+  1152.3   1162.1   -573.2   1146.3      189 
+
+Scaled residuals: 
+    Min      1Q  Median      3Q     Max 
+-1.7097 -0.8744  0.1697  0.7961  1.6314 
+
+Random effects:
+ Groups                   Name        Variance Std.Dev.
+ working_dataT$window_idx (Intercept)  0.00    0.000   
+ Residual                             22.93    4.789   
+Number of obs: 192, groups:  working_dataT$window_idx, 24
+
+Fixed effects:
+            Estimate Std. Error t value
+(Intercept)   8.1875     0.3456   23.69
+optimizer (nloptwrap) convergence code: 0 (OK)
+boundary (singular) fit: see help('isSingular')
+

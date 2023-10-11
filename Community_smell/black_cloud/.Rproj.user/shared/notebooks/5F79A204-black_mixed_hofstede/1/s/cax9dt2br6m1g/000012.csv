@@ -1,0 +1,36 @@
+"0",""
+"0","# Applying vif <5"
+"0","print(vif(blackT))"
+"0",""
+"0","# Applying a Linear Mixed Model using the lmer function, after vif, NO REMOVALS"
+"0","blackT <- lmer(working_dataG$black~log(working_dataG$totalCommitters)+log(working_dataG$totalcommits)"
+"0","             +working_dataG$projectAge+working_dataG$turnover"
+"0","             +working_dataG$tenureMedian+working_dataG$centrality+working_dataG$tenureDiversity"
+"0","             +working_dataG$stCongruence+working_dataG$truckFactor"
+"0","             +working_dataG$expertise+working_dataG$female+working_dataG$blauGender"
+"0","             +(1 | working_dataG$window_idx ), REML=FALSE)"
+"2","boundary (singular) fit: see help('isSingular')
+"
+"0","# print result"
+"0","print(summary(blackT))"
+"2","
+Correlation matrix not shown by default, as p = 13 > 12.
+Use print(summary(blackT), correlation=TRUE)  or
+    vcov(summary(blackT))        if you need it
+
+"
+"0","# Applying anova"
+"0","Anova(blackT)"
+"0",""
+"0","# Save in a txt file"
+"0","sink(""output_black_globe_confounding_variables.txt"")"
+"0","print(summary(blackT))"
+"2","
+Correlation matrix not shown by default, as p = 13 > 12.
+Use print(summary(blackT), correlation=TRUE)  or
+    vcov(summary(blackT))        if you need it
+
+"
+"0","Anova(blackT)"
+"0","sink()"
+"0",""

@@ -1,0 +1,364 @@
+---
+title: "organisatiosiloModelConstruction"
+output:
+  pdf_document: default
+  html_notebook: default
+  html_document:
+    df_print: paged
+---
+
+This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+
+This notebook has been used to create a Linear Mixed Effect Model for the organisation silo analysis.
+
+```{r}
+
+# Package names
+packages <- c("carData", "car", "Matrix", "lme4", "LMERConvenienceFunctions")
+
+# Install packages not yet installed
+installed_packages <- packages %in% rownames(installed.packages())
+if (any(installed_packages == FALSE)) {
+  install.packages(packages[!installed_packages])
+}
+
+# Packages loading
+invisible(lapply(packages, library, character.only = TRUE))
+
+
+```
+
+# Datasets load
+
+```{r}
+
+# Reading input hofstede data.
+data <- read.csv("./organisation_silo_metrics_hofstede.csv", sep = ";", header = TRUE, stringsAsFactors=FALSE)
+# Reading input trompenaars data.
+dataT <- read.csv("./organisation_silo_metrics_trompenaars.csv", sep = ";", header = TRUE, stringsAsFactors=FALSE)
+# Reading input globe data.
+dataG <- read.csv("./organisation_silo_metrics_globe.csv", sep = ";", header = TRUE, stringsAsFactors=FALSE)
+
+# Excluding some columns from hofstede data
+working_data <- na.omit(data)
+# Excluding some columns from trompenaars data
+working_dataT <- na.omit(dataT)
+# Excluding some columns from globe data
+working_dataG <- na.omit(dataG)
+
+```
+
+# Linear Mixed Model using lmer function on all the variables for Hofstede
+
+```{r}
+
+#----------------------------
+#ALL THE VARIABLES
+
+# Applying a Linear Mixed Model using the lmer function
+organisation <- lmer(working_data$organisation~log(working_data$totalCommitters)+log(working_data$totalcommits)
+             +working_data$projectAge+working_data$turnover+working_data$blauGender
+             +working_data$tenureMedian+working_data$tenureDiversity+log(working_data$teamSize)
+             +working_data$stCongruence+working_data$truckFactor+working_data$female
+             +working_data$expertise+working_data$centrality+working_data$CV_1
+             +working_data$CV_2+working_data$CV_3
+             +working_data$CV_4+working_data$CV_5+working_data$CV_6
+             +(1 | working_data$window_idx ), REML=FALSE)
+
+# Remove outlier
+#romr.fnc(black, working_data, trim = 2.5)
+
+# Applying vif <5
+print(vif(organisation))
+
+# Applying a Linear Mixed Model using the lmer function, after vif - NO REMOVAL
+
+# print result
+print(summary(organisation))
+
+# Applying anova
+Anova(organisation)
+
+# Save in a txt file
+sink("hofstede/output_organisation_hofstede_all_variables.txt")
+print(summary(organisation))
+Anova(organisation)
+sink()
+
+```
+# Linear Mixed Model using lmer function on all the variables for trompenaars
+
+```{r}
+
+#----------------------------
+#ALL THE VARIABLES
+
+# Applying a Linear Mixed Model using the lmer function
+organisationT <- lmer(working_dataT$organisation~log(working_data$totalCommitters)+log(working_dataT$totalcommits)
+             +working_data$projectAge+working_dataT$turnover+working_dataT$blauGender
+             +working_dataT$tenureMedian+working_dataT$tenureDiversity+log(working_dataT$teamSize)
+             +working_dataT$stCongruence+working_dataT$truckFactor+working_dataT$female
+             +working_dataT$expertise+working_dataT$centrality+working_dataT$CV_1
+             +working_dataT$CV_2+working_dataT$CV_3
+             +working_dataT$CV_4+working_dataT$CV_5+working_dataT$CV_6
+             +working_dataT$CV_7+working_dataT$CV_8
+             +(1 | working_dataT$window_idx ), REML=FALSE)
+
+# Remove outlier
+#romr.fnc(blackT, working_dataT, trim = 2.5)
+
+# Applying vif <5
+print(vif(organisationT))
+
+# Applying a Linear Mixed Model using the lmer function, after vif - NO REMOVAL
+
+# print result
+print(summary(organisationT))
+
+# Applying anova
+Anova(organisationT)
+
+# Save in a txt file
+sink("trompe/output_organisation_trompenaars_all_variables.txt")
+print(summary(organisationT))
+Anova(organisationT)
+sink()
+
+```
+
+# Linear Mixed Model using lmer function on all the variables for Globe
+
+```{r}
+
+#----------------------------
+#ALL THE VARIABLES
+
+# Applying a Linear Mixed Model using the lmer function
+organisationG <- lmer(working_dataG$organisation~log(working_dataG$totalCommitters)+log(working_dataG$totalcommits)
+             +working_dataG$projectAge+working_dataG$turnover+working_dataG$blauGender
+             +working_dataG$tenureMedian+working_dataG$tenureDiversity+log(working_dataG$teamSize)
+             +working_dataG$stCongruence+working_dataG$truckFactor+working_dataG$female
+             +working_dataG$expertise+working_dataG$centrality+working_dataG$CV_1
+             +working_dataG$CV_2+working_dataG$CV_3
+             +working_dataG$CV_4+working_dataG$CV_5+working_dataG$CV_6+working_dataG$CV_7
+             +working_dataG$CV_8+working_dataG$CV_9
+             +(1 | working_dataG$window_idx ), REML=FALSE)
+
+# Remove outlier
+#romr.fnc(blackG, working_dataG, trim = 2.5)
+
+# Applying vif <5
+print(vif(organisationG))
+
+# Applying a Linear Mixed Model using the lmer function, after vif - NO REMOVAL
+
+# print result
+print(summary(organisationG))
+
+# Applying anova
+Anova(organisationG)
+
+# Save in a txt file
+sink("globe/output_organisation_globe_all_variables.txt")
+print(summary(organisationG))
+Anova(organisationG)
+sink()
+
+```
+
+# Linear Mixed Model using lmer function on all the confounding variables hofstede
+
+```{r}
+
+#----------------------------
+#ALL THE CONFOUNDING VARIABLES
+
+# Applying a Linear Mixed Model using the lmer function
+organisation <- lmer(working_data$organisation~log(working_data$totalCommitters)+log(working_data$totalcommits)
+             +working_data$projectAge+working_data$turnover
+             +working_data$tenureMedian+working_data$tenureDiversity+log(working_data$teamSize)
+             +working_data$stCongruence+working_data$centrality+working_data$truckFactor
+             +working_data$expertise+working_data$female+working_data$blauGender
+             +(1 | working_data$window_idx ), REML=FALSE)
+
+# Remove outlier
+#romr.fnc(organisation, working_data, trim = 2.5)
+
+# Applying vif <5
+print(vif(organisation))
+
+# Applying a Linear Mixed Model using the lmer function, after vif, NO REMOVALS
+organisation <- lmer(working_data$organisation~log(working_data$totalCommitters)+log(working_data$totalcommits)
+             +working_data$projectAge+working_data$turnover
+             +working_data$tenureMedian+working_data$centrality+working_data$tenureDiversity
+             +working_data$stCongruence+working_data$truckFactor
+             +working_data$expertise+working_data$female+working_data$blauGender
+             +(1 | working_data$window_idx ), REML=FALSE)
+
+# print result
+print(summary(organisation))
+
+# Applying anova
+Anova(organisation)
+
+# Save in a txt file
+sink("hofstede/output_organisation_hofstede_confounding_variables.txt")
+print(summary(organisation))
+Anova(organisation)
+sink()
+
+```
+
+# Linear Mixed Model using lmer function on all the confounding variables trompenaars
+
+```{r}
+
+#----------------------------
+#ALL THE CONFOUNDING VARIABLES
+
+# Applying a Linear Mixed Model using the lmer function
+organisationT <- lmer(working_dataT$organisation~log(working_dataT$totalCommitters)+log(working_dataT$totalcommits)
+             +working_dataT$projectAge+working_dataT$turnover
+             +working_dataT$tenureMedian+working_dataT$tenureDiversity+log(working_dataT$teamSize)
+             +working_dataT$stCongruence+working_dataT$centrality+working_dataT$truckFactor
+             +working_dataT$expertise+working_dataT$female+working_dataT$blauGender
+             +(1 | working_dataT$window_idx ), REML=FALSE)
+
+# Remove outlier
+#romr.fnc(blackT, working_dataT, trim = 2.5)
+
+# Applying vif <5
+print(vif(organisationT))
+
+# Applying a Linear Mixed Model using the lmer function, after vif, NO REMOVALS
+organisationT <- lmer(working_dataT$organisation~log(working_dataT$totalCommitters)+log(working_dataT$totalcommits)
+             +working_dataT$projectAge+working_dataT$turnover
+             +working_dataT$tenureMedian+working_dataT$centrality+working_dataT$tenureDiversity
+             +working_dataT$stCongruence+working_dataT$truckFactor
+             +working_dataT$expertise+working_dataT$female+working_dataT$blauGender
+             +(1 | working_dataT$window_idx ), REML=FALSE)
+
+# print result
+print(summary(organisationT))
+
+# Applying anova
+Anova(organisationT)
+
+# Save in a txt file
+sink("trompe/output_organisation_trompenaars_confounding_variables.txt")
+print(summary(organisationT))
+Anova(organisationT)
+sink()
+
+```
+
+
+# Linear Mixed Model using lmer function on all the confounding variables globe
+
+```{r}
+
+#----------------------------
+#ALL THE CONFOUNDING VARIABLES
+
+# Applying a Linear Mixed Model using the lmer function
+organisationT <- lmer(working_dataG$organisation~log(working_dataG$totalCommitters)+log(working_dataG$totalcommits)
+             +working_dataG$projectAge+working_dataG$turnover
+             +working_dataG$tenureMedian+working_dataG$tenureDiversity+log(working_dataG$teamSize)
+             +working_dataG$stCongruence+working_dataG$centrality+working_dataG$truckFactor
+             +working_dataG$expertise+working_dataG$female+working_dataG$blauGender
+             +(1 | working_dataG$window_idx ), REML=FALSE)
+
+# Remove outlier
+#romr.fnc(blackT, working_dataG, trim = 2.5)
+
+# Applying vif <5
+print(vif(organisationT))
+
+# Applying a Linear Mixed Model using the lmer function, after vif, NO REMOVALS
+organisationT <- lmer(working_dataG$organisation~log(working_dataG$totalCommitters)+log(working_dataG$totalcommits)
+             +working_dataG$projectAge+working_dataG$turnover
+             +working_dataG$tenureMedian+working_dataG$centrality+working_dataG$tenureDiversity
+             +working_dataG$stCongruence+working_dataG$truckFactor
+             +working_dataG$expertise+working_dataG$female+working_dataG$blauGender
+             +(1 | working_dataG$window_idx ), REML=FALSE)
+
+# print result
+print(summary(organisationT))
+
+# Applying anova
+Anova(organisationT)
+
+# Save in a txt file
+sink("globe/output_organisation_globe_confounding_variables.txt")
+print(summary(organisationT))
+Anova(organisationT)
+sink()
+
+```
+
+# Linear Mixed Model using lmer function on only random effect hofsetde
+
+```{r}
+
+#----------------------------
+#ONLY RANDOM EFFECT
+
+# Applying a Linear Mixed Model using the lmer function
+organisation <- lmer(working_data$organisation~(1 | working_data$window_idx ), REML=FALSE)
+
+# Remove outlier
+#romr.fnc(black, working_data, trim = 2.5)
+
+# print result
+print(summary(organisation))
+
+# Save in a txt file
+sink("hofstede/output_organisation_hofstede_random.txt")
+print(summary(organisation))
+sink()
+
+```
+# Linear Mixed Model using lmer function on only random effect trompenaars
+
+```{r}
+
+#----------------------------
+#ONLY RANDOM EFFECT
+
+# Applying a Linear Mixed Model using the lmer function
+organisationT <- lmer(working_dataT$organisation~(1 | working_dataT$window_idx ), REML=FALSE)
+
+# Remove outlier
+#romr.fnc(blackT, working_dataT, trim = 2.5)
+
+# print result
+print(summary(organisationT))
+
+# Save in a txt file
+sink("trompe/output_organisation_trompenaars_random.txt")
+print(summary(organisationT))
+sink()
+
+```
+# Linear Mixed Model using lmer function on only random effect globe
+
+```{r}
+
+#----------------------------
+#ONLY RANDOM EFFECT
+
+# Applying a Linear Mixed Model using the lmer function
+organisationG <- lmer(working_dataG$organisation~(1 | working_dataG$window_idx ), REML=FALSE)
+
+# Remove outlier
+#romr.fnc(organisationG, working_dataG, trim = 2.5)
+
+# print result
+print(summary(organisationG))
+
+# Save in a txt file
+sink("globe/output_organisation_globe_random.txt")
+print(summary(organisationG))
+sink()
+
+```

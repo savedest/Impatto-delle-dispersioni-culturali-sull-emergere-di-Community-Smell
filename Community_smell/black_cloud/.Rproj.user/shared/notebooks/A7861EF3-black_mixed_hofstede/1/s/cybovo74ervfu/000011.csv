@@ -1,0 +1,7 @@
+"0",""
+"0","# Reading input data."
+"0","data <- read.csv(""./black_cloud_metrics_hofstede.csv"", sep = "";"", header = TRUE, stringsAsFactors=FALSE)"
+"0",""
+"0","# Excluding some columns"
+"0","working_data <- na.omit(data)"
+"0",""

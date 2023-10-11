@@ -1,0 +1,19 @@
+"0",""
+"0","#----------------------------"
+"2","Warning in normalizePath(path.expand(path), winslash, mustWork) :"
+"2"," path[1]=""C:/Users/saver/OneDrive - Universit� di Salerno/Documenti"": Impossibile trovare il percorso specificato
+"
+"0","#ALL THE VARIABLES"
+"0",""
+"0","# Applying a Linear Mixed Model using the lmer function"
+"0","radio <- lmer(working_data$radio~log(working_data$totalCommitters)+log(working_data$totalcommits)"
+"0","             +working_data$projectAge+working_data$turnover+working_data$blauGender"
+"0","             +working_data$tenureMedian+working_data$tenureDiversity+log(working_data$teamSize)"
+"0","             +working_data$stCongruence+working_data$truckFactor+working_data$female"
+"0","             +working_data$expertise+working_data$centrality+working_data$CV_1"
+"0","             +working_data$CV_2+working_data$CV_3"
+"0","             +working_data$CV_4+working_data$CV_5+working_data$CV_6"
+"0","             +(1 | working_data$window_idx ), REML=FALSE)"
+"2","Error in lme4::lFormula(formula = working_data$radio ~ log(working_data$totalCommitters) +  : 
+  0 (non-NA) cases
+"

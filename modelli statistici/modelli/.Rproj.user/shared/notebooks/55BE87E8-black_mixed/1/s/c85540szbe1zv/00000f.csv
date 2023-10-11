@@ -1,0 +1,35 @@
+"0",""
+"2","Warning message:
+"
+"2","In normalizePath(path.expand(path), winslash, mustWork) :"
+"2"," path[1]=""C:/Users/saver/OneDrive - Universit� di Salerno/Documenti"": Impossibile trovare il percorso specificato
+"
+"0","# Package names"
+"0","packages <- c(""carData"", ""car"", ""Matrix"", ""lme4"", ""LMERConvenienceFunctions"")"
+"0",""
+"0","# Install packages not yet installed"
+"0","installed_packages <- packages %in% rownames(installed.packages())"
+"0","if (any(installed_packages == FALSE)) {"
+"0","  install.packages(packages[!installed_packages])"
+"0","}"
+"0",""
+"0","# Packages loading"
+"0","invisible(lapply(packages, library, character.only = TRUE))"
+"2","Avvertimento: il pacchetto ‘carData’ è stato creato con R versione 4.2.3"
+"2","Error in nchar(homeDir) : invalid multibyte string, element 1
+"
+"2","Avvertimento: il pacchetto ‘car’ è stato creato con R versione 4.2.3"
+"2","Error in nchar(homeDir) : invalid multibyte string, element 1
+"
+"2","Avvertimento: il pacchetto ‘Matrix’ è stato creato con R versione 4.2.3"
+"2","Error in nchar(homeDir) : invalid multibyte string, element 1
+"
+"2","Avvertimento: il pacchetto ‘lme4’ è stato creato con R versione 4.2.3"
+"2","Error in nchar(homeDir) : invalid multibyte string, element 1
+"
+"2","Avvertimento: il pacchetto ‘LMERConvenienceFunctions’ è stato creato con R versione 4.2.3"
+"2","Error in nchar(homeDir) : invalid multibyte string, element 1
+"
+"2","Warning in normalizePath(path.expand(path), winslash, mustWork) :"
+"2"," path[1]=""C:/Users/saver/OneDrive - Universit� di Salerno/Documenti"": Impossibile trovare il percorso specificato
+"

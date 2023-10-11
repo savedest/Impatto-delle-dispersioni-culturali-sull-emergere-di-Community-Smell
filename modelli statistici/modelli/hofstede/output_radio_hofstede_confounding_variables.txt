@@ -1,0 +1,56 @@
+Linear mixed model fit by maximum likelihood  ['lmerMod']
+Formula: working_data$radio ~ log(working_data$totalCommitters) + log(working_data$totalcommits) +  
+    working_data$projectAge + working_data$turnover + working_data$tenureMedian +  
+    working_data$centrality + working_data$tenureDiversity +  
+    working_data$stCongruence + working_data$truckFactor + working_data$expertise +  
+    working_data$female + working_data$blauGender + (1 | working_data$window_idx)
+
+     AIC      BIC   logLik deviance df.resid 
+   521.2    570.1   -245.6    491.2      177 
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.50595 -0.70062 -0.05552  0.70805  2.91045 
+
+Random effects:
+ Groups                  Name        Variance Std.Dev.
+ working_data$window_idx (Intercept) 0.0000   0.0000  
+ Residual                            0.7561   0.8696  
+Number of obs: 192, groups:  working_data$window_idx, 24
+
+Fixed effects:
+                                   Estimate Std. Error t value
+(Intercept)                       -2.294259   0.648388  -3.538
+log(working_data$totalCommitters) -0.047530   0.086047  -0.552
+log(working_data$totalcommits)     0.028379   0.061202   0.464
+working_data$projectAge           -0.024382   0.014861  -1.641
+working_data$turnover             10.055517   0.460683  21.827
+working_data$tenureMedian          0.046144   0.035956   1.283
+working_data$centrality           -0.045816   0.148499  -0.309
+working_data$tenureDiversity       0.009707   0.025311   0.383
+working_data$stCongruence         -0.305010   0.188020  -1.622
+working_data$truckFactor          -0.015009   0.047116  -0.319
+working_data$expertise             0.079327   0.206509   0.384
+working_data$female                0.038041   0.012415   3.064
+working_data$blauGender            0.307979   0.836685   0.368
+optimizer (nloptwrap) convergence code: 0 (OK)
+boundary (singular) fit: see help('isSingular')
+
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: working_data$radio
+                                     Chisq Df Pr(>Chisq)    
+log(working_data$totalCommitters)   0.3051  1   0.580697    
+log(working_data$totalcommits)      0.2150  1   0.642865    
+working_data$projectAge             2.6917  1   0.100870    
+working_data$turnover             476.4351  1  < 2.2e-16 ***
+working_data$tenureMedian           1.6470  1   0.199371    
+working_data$centrality             0.0952  1   0.757682    
+working_data$tenureDiversity        0.1471  1   0.701351    
+working_data$stCongruence           2.6316  1   0.104757    
+working_data$truckFactor            0.1015  1   0.750058    
+working_data$expertise              0.1476  1   0.700879    
+working_data$female                 9.3882  1   0.002184 ** 
+working_data$blauGender             0.1355  1   0.712803    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

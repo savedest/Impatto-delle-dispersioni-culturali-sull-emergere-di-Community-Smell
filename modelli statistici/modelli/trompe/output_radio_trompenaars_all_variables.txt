@@ -1,0 +1,77 @@
+Linear mixed model fit by maximum likelihood  ['lmerMod']
+Formula: working_dataT$radio ~ log(working_data$totalCommitters) + log(working_dataT$totalcommits) +  
+    working_data$projectAge + working_dataT$turnover + working_dataT$blauGender +  
+    working_dataT$tenureMedian + working_dataT$tenureDiversity +  
+    log(working_dataT$teamSize) + working_dataT$stCongruence +  
+    working_dataT$truckFactor + working_dataT$female + working_dataT$expertise +  
+    working_dataT$centrality + working_dataT$CV_1 + working_dataT$CV_2 +  
+    working_dataT$CV_3 + working_dataT$CV_4 + working_dataT$CV_5 +  
+    working_dataT$CV_6 + working_dataT$CV_7 + working_dataT$CV_8 +      (1 | working_dataT$window_idx)
+
+     AIC      BIC   logLik deviance df.resid 
+   522.0    600.2   -237.0    474.0      168 
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-2.46105 -0.69672 -0.07956  0.69482  3.11572 
+
+Random effects:
+ Groups                   Name        Variance Std.Dev.
+ working_dataT$window_idx (Intercept) 0.0000   0.0000  
+ Residual                             0.6914   0.8315  
+Number of obs: 192, groups:  working_dataT$window_idx, 24
+
+Fixed effects:
+                                   Estimate Std. Error t value
+(Intercept)                       -4.564420   1.002534  -4.553
+log(working_data$totalCommitters) -0.046905   0.090202  -0.520
+log(working_dataT$totalcommits)    0.047368   0.069466   0.682
+working_data$projectAge           -0.021381   0.015103  -1.416
+working_dataT$turnover            10.151464   0.453059  22.406
+working_dataT$blauGender           3.670735   1.442741   2.544
+working_dataT$tenureMedian         0.054018   0.035000   1.543
+working_dataT$tenureDiversity      0.006003   0.025068   0.239
+log(working_dataT$teamSize)        0.364748   0.152296   2.395
+working_dataT$stCongruence        -0.278528   0.182264  -1.528
+working_dataT$truckFactor         -0.005453   0.045687  -0.119
+working_dataT$female              -0.001910   0.022533  -0.085
+working_dataT$expertise           -0.012927   0.202635  -0.064
+working_dataT$centrality          -0.092194   0.145609  -0.633
+working_dataT$CV_1                 1.156583   2.185867   0.529
+working_dataT$CV_2                -1.017977   1.569737  -0.649
+working_dataT$CV_3                -2.171341   1.297871  -1.673
+working_dataT$CV_4                 3.712707   1.730648   2.145
+working_dataT$CV_5                -1.612814   2.110333  -0.764
+working_dataT$CV_6                 0.118044   0.561286   0.210
+working_dataT$CV_7                -2.218071   1.457544  -1.522
+working_dataT$CV_8                 2.237561   1.086692   2.059
+optimizer (nloptwrap) convergence code: 0 (OK)
+boundary (singular) fit: see help('isSingular')
+
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: working_dataT$radio
+                                     Chisq Df Pr(>Chisq)    
+log(working_data$totalCommitters)   0.2704  1    0.60306    
+log(working_dataT$totalcommits)     0.4650  1    0.49531    
+working_data$projectAge             2.0041  1    0.15687    
+working_dataT$turnover            502.0501  1    < 2e-16 ***
+working_dataT$blauGender            6.4734  1    0.01095 *  
+working_dataT$tenureMedian          2.3819  1    0.12275    
+working_dataT$tenureDiversity       0.0573  1    0.81074    
+log(working_dataT$teamSize)         5.7360  1    0.01662 *  
+working_dataT$stCongruence          2.3353  1    0.12647    
+working_dataT$truckFactor           0.0142  1    0.90499    
+working_dataT$female                0.0072  1    0.93244    
+working_dataT$expertise             0.0041  1    0.94913    
+working_dataT$centrality            0.4009  1    0.52663    
+working_dataT$CV_1                  0.2800  1    0.59672    
+working_dataT$CV_2                  0.4206  1    0.51666    
+working_dataT$CV_3                  2.7989  1    0.09433 .  
+working_dataT$CV_4                  4.6022  1    0.03193 *  
+working_dataT$CV_5                  0.5841  1    0.44472    
+working_dataT$CV_6                  0.0442  1    0.83343    
+working_dataT$CV_7                  2.3158  1    0.12806    
+working_dataT$CV_8                  4.2397  1    0.03949 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1

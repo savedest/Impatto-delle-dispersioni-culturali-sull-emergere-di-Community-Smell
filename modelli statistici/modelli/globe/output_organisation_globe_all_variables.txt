@@ -1,0 +1,80 @@
+Linear mixed model fit by maximum likelihood  ['lmerMod']
+Formula: working_dataG$organisation ~ log(working_dataG$totalCommitters) +  
+    log(working_dataG$totalcommits) + working_dataG$projectAge +  
+    working_dataG$turnover + working_dataG$blauGender + working_dataG$tenureMedian +  
+    working_dataG$tenureDiversity + log(working_dataG$teamSize) +  
+    working_dataG$stCongruence + working_dataG$truckFactor +  
+    working_dataG$female + working_dataG$expertise + working_dataG$centrality +  
+    working_dataG$CV_1 + working_dataG$CV_2 + working_dataG$CV_3 +  
+    working_dataG$CV_4 + working_dataG$CV_5 + working_dataG$CV_6 +  
+    working_dataG$CV_7 + working_dataG$CV_8 + working_dataG$CV_9 +      (1 | working_dataG$window_idx)
+
+     AIC      BIC   logLik deviance df.resid 
+   769.1    850.5   -359.5    719.1      167 
+
+Scaled residuals: 
+     Min       1Q   Median       3Q      Max 
+-1.92619 -0.78614 -0.06918  0.76229  2.16341 
+
+Random effects:
+ Groups                   Name        Variance Std.Dev.
+ working_dataG$window_idx (Intercept) 0.000    0.000   
+ Residual                             2.478    1.574   
+Number of obs: 192, groups:  working_dataG$window_idx, 24
+
+Fixed effects:
+                                     Estimate Std. Error t value
+(Intercept)                          2.545158   1.491705   1.706
+log(working_dataG$totalCommitters)   0.420619   0.178454   2.357
+log(working_dataG$totalcommits)     -0.176115   0.140266  -1.256
+working_dataG$projectAge            -0.030251   0.028370  -1.066
+working_dataG$turnover              -1.639682   0.610633  -2.685
+working_dataG$blauGender             1.328480   1.975786   0.672
+working_dataG$tenureMedian          -0.125299   0.066325  -1.889
+working_dataG$tenureDiversity        0.001283   0.046992   0.027
+log(working_dataG$teamSize)          0.290309   0.170566   1.702
+working_dataG$stCongruence           0.334951   0.342530   0.978
+working_dataG$truckFactor            0.034951   0.087388   0.400
+working_dataG$female                 0.039667   0.020731   1.913
+working_dataG$expertise             -0.344030   0.395550  -0.870
+working_dataG$centrality             0.028069   0.273559   0.103
+working_dataG$CV_1                  -7.507475  14.071473  -0.534
+working_dataG$CV_2                  -9.952546  10.619782  -0.937
+working_dataG$CV_3                  -8.910067  12.958495  -0.688
+working_dataG$CV_4                  15.770592  14.494298   1.088
+working_dataG$CV_5                  -2.693425  10.854846  -0.248
+working_dataG$CV_6                  12.220115  22.018531   0.555
+working_dataG$CV_7                  -1.534864   7.344964  -0.209
+working_dataG$CV_8                  12.259021  20.763052   0.590
+working_dataG$CV_9                 -25.090925  15.491484  -1.620
+optimizer (nloptwrap) convergence code: 0 (OK)
+boundary (singular) fit: see help('isSingular')
+
+Analysis of Deviance Table (Type II Wald chisquare tests)
+
+Response: working_dataG$organisation
+                                    Chisq Df Pr(>Chisq)   
+log(working_dataG$totalCommitters) 5.5555  1   0.018423 * 
+log(working_dataG$totalcommits)    1.5765  1   0.209270   
+working_dataG$projectAge           1.1369  1   0.286301   
+working_dataG$turnover             7.2104  1   0.007248 **
+working_dataG$blauGender           0.4521  1   0.501342   
+working_dataG$tenureMedian         3.5690  1   0.058868 . 
+working_dataG$tenureDiversity      0.0007  1   0.978220   
+log(working_dataG$teamSize)        2.8969  1   0.088750 . 
+working_dataG$stCongruence         0.9562  1   0.328137   
+working_dataG$truckFactor          0.1600  1   0.689191   
+working_dataG$female               3.6611  1   0.055697 . 
+working_dataG$expertise            0.7565  1   0.384436   
+working_dataG$centrality           0.0105  1   0.918275   
+working_dataG$CV_1                 0.2846  1   0.593671   
+working_dataG$CV_2                 0.8783  1   0.348671   
+working_dataG$CV_3                 0.4728  1   0.491714   
+working_dataG$CV_4                 1.1839  1   0.276571   
+working_dataG$CV_5                 0.0616  1   0.804033   
+working_dataG$CV_6                 0.3080  1   0.578900   
+working_dataG$CV_7                 0.0437  1   0.834473   
+working_dataG$CV_8                 0.3486  1   0.554906   
+working_dataG$CV_9                 2.6233  1   0.105306   
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
